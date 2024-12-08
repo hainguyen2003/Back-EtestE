@@ -32,4 +32,13 @@ public class BaseController {
         baseResponse.setStatusCode(500);
         return ResponseEntity.ok(baseResponse);
     }
+    // Trong lớp BaseController
+    protected ResponseEntity<?> buildErrorResponse(String message) {
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setSuccess(false);
+        baseResponse.setFailed(ErrorCodeDefs.SERVER_ERROR, message);  // Bạn có thể thay ErrorCodeDefs.SERVER_ERROR bằng mã lỗi khác nếu cần
+        baseResponse.setStatusCode(500);
+        return ResponseEntity.ok(baseResponse);
+    }
+
 }
